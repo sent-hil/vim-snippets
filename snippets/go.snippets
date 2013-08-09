@@ -72,7 +72,7 @@ snippet in
 	interface{}
 # full interface snippet
 snippet inf
-	interface ${1:name} {
+	type ${1:name} interface {
 		${2:/* methods */}
 	}${3}
 # if condition
@@ -86,10 +86,11 @@ snippet el
 		${1}
 	}${2}
 # error snippet
-snippet ir
+snippet err
 	if err != nil {
 		return err
 	}
+
 	${1}
 # false
 snippet f
@@ -127,17 +128,15 @@ snippet fr
 	}
 	${5}
 # function simple
-snippet fun
-	func ${1:funcName}(${2}) ${3:error} {
-		${4}
-	}
-	${5}
-# function on receiver
-snippet fum
-	func (self ${1:type}) ${2:funcName}(${3}) ${4:error} {
+snippet f
+	func ${1:funcName}(${2:argName} ${3:type}) ${4:error} {
 		${5}
 	}
-	${6}
+# function on receiver, i.e. method
+snippet m
+	func (${1:receiver} ${2:type}) ${3:funcName}(${4:argName} ${5:type}) ${6:error} {
+		${7}
+	}
 # log printf
 snippet lf
 	log.Printf("%${1:s}", ${2:var})${3}
@@ -219,3 +218,31 @@ snippet ga
 	go func(${1} ${2:type}) {
 		${3:/* code */}
 	}(${4})
+# start
+snippet st
+	package main
+
+	import (
+		"${1:package}"
+	)
+
+	func main() {
+		${2}
+	}
+# package
+snippet pk
+	package ${1:name}
+
+	import (
+		"${2:package}"
+	)
+# comment
+snippet c
+	//----------------------------------------------------------
+	// ${1}
+	//----------------------------------------------------------
+	${2}
+snippet ts
+	func (s *MySuite) ${1}(c *C) {
+		${2}
+	}
