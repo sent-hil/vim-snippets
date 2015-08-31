@@ -1,37 +1,9 @@
-# append
-snippet ap
-	append(${1:slice}, ${2:value})
-# bool
-snippet bl
-	bool
-# byte
-snippet bt
-	byte
-# break
-snippet br
-	break
-# channel
-snippet ch
-	chan ${1:int}
-# case
-snippet cs
-	case ${1:value}:
-		${2}
-# const
-snippet c
-	const ${1:NAME} = ${2:0}
 # constants with iota
-snippet co
+snippet ci
 	const (
 		${1:NAME1} = iota
 		${2:NAME2}
 	)
-# continue
-snippet cn
-	continue
-# defer
-snippet df
-	defer ${1:func}()
 # defer recover
 snippet dfr
 	defer func() {
@@ -39,37 +11,6 @@ snippet dfr
 			${1}
 		}
 	}()
-# gpl
-snippet gpl
-	/*
-	 * This program is free software; you can redistribute it and/or modify
-	 * it under the terms of the GNU General Public License as published by
-	 * the Free Software Foundation; either version 2 of the License, or
-	 * (at your option) any later version.
-	 *
-	 * This program is distributed in the hope that it will be useful,
-	 * but WITHOUT ANY WARRANTY; without even the implied warranty of
-	 * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	 * GNU General Public License for more details.
-	 *
-	 * You should have received a copy of the GNU General Public License
-	 * along with this program; if not, see <http://www.gnu.org/licenses/>.
-	 *
-	 * Copyright (C) ${1:Author}, `strftime("%Y")`
-	 */
-
-	${2}
-# int
-snippet i
-	int
-# import
-snippet im
-	import (
-		"${1:package}"
-	)${2}
-# interface
-snippet in
-	interface{}
 # full interface snippet
 snippet inf
 	type ${1:name} interface {
@@ -80,33 +21,16 @@ snippet if
 	if ${1:/* condition */} {
 		${2}
 	}${3}
-# else snippet
-snippet el
-	else {
-		${1}
-	}${2}
 # error snippet
 snippet err
 	if err != nil {
 		return err
 	}
-
-	${1}
-# false
-snippet f
-	false
-# fallthrough
-snippet ft
-	fallthrough
-# float
-snippet fl
-	float32
-# float32
-snippet f3
-	float32
-# float64
-snippet f6
-	float64
+# error snippet
+snippet er
+	if ${1}; err != nil {
+		return err
+	}
 # if else
 snippet ie
 	if ${1:/* condition */} {
@@ -143,36 +67,14 @@ snippet lf
 # log printf
 snippet lp
 	log.Println("${1}")${2}
-# make
-snippet mk
-	make(${1:[]string}, ${2:0})
-# map
-snippet mp
-	map[${1:string}]${2:int}
 # main()
 snippet main
 	func main() {
 		${1}
 	}
-	${2}
-# new
-snippet nw
-	new(${1:type})
-# panic
-snippet pn
-	panic("${1:msg}")
 # print
 snippet pr
 	fmt.Printf("%${1:s}\n", ${2:var})${3}
-# range
-snippet rn
-	range ${1}
-# return
-snippet rt
-	return ${1}
-# result
-snippet rs
-	result
 # select
 snippet sl
 	select {
@@ -183,9 +85,6 @@ snippet sl
 	default:
 		${7}
 	}
-# string
-snippet sr
-	string
 # struct
 snippet st
 	struct ${1:name} {
@@ -204,45 +103,28 @@ snippet sw
 	}
 snippet sp
 	fmt.Sprintf("%${1:s}", ${2:var})${3}
-# true
-snippet t
-	true
-# variable declaration
-snippet v
-	var ${1:t} ${2:string}
-# goroutine named function
-snippet g
-	go ${1:funcName}(${2})
-# goroutine anonymous function 
-snippet ga
-	go func(${1} ${2:type}) {
-		${3:/* code */}
-	}(${4})
 # start
-snippet st
+snippet pk
 	package main
 
-	import (
-		"${1:package}"
-	)
-
 	func main() {
-		${2}
+		${1}
 	}
-# package
-snippet pk
-	package ${1:name}
-
-	import (
-		"${2:package}"
-	)
 # comment
 snippet c
 	//----------------------------------------------------------
 	// ${1}
 	//----------------------------------------------------------
 	${2}
-snippet ts
-	func (s *MySuite) ${1}(c *C) {
-		${2}
+snippet te
+	package main
+
+	import (
+	  "testing"
+
+	  . "github.com/smartystreets/goconvey/convey"
+	)
+
+	func Test${1}(t *testing.T) {
+	  ${2}
 	}
