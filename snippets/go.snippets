@@ -1,121 +1,28 @@
-# constants with iota
-snippet ci
-	const (
-		${1:NAME1} = iota
-		${2:NAME2}
-	)
-# defer recover
-snippet dfr
-	defer func() {
-		if err := recover(); err != nil {
-			${1}
-		}
-	}()
-# full interface snippet
-snippet inf
-	type ${1:name} interface {
-		${2:/* methods */}
-	}${3}
-# if condition
-snippet if
-	if ${1:/* condition */} {
-		${2}
-	}${3}
-# error snippet
-snippet err
-	if err != nil {
-		return err
-	}
-# error snippet
 snippet er
 	if ${1}; err != nil {
 		return err
 	}
-# if else
-snippet ie
-	if ${1:/* condition */} {
-		${2}
-	} else {
-		${3}
+snippet err
+	if err != nil {
+		return err
 	}
-	${4}
-# for loop
-snippet fo
-	for ${2:i} := 0; $2 < ${1:count}; $2${3:++} {
-		${4}
-	}
-	${5}
-# for range loop
-snippet fr
-	for ${1:k}, ${2:v} := range ${3} {
-		${4}
-	}
-	${5}
-# function simple
-snippet f
-	func ${1:funcName}(${2:argName} ${3:type}) ${4:error} {
-		${5}
-	}
-# function on receiver, i.e. method
-snippet m
-	func (${1:receiver} ${2:type}) ${3:funcName}(${4:argName} ${5:type}) ${6:error} {
-		${7}
-	}
-# log printf
 snippet lf
 	log.Printf("%${1:s}", ${2:var})${3}
-# log printf
 snippet lp
 	log.Println("${1}")${2}
-# main()
-snippet main
-	func main() {
-		${1}
-	}
-# print
 snippet pr
 	fmt.Printf("%${1:s}\n", ${2:var})${3}
-# select
-snippet sl
-	select {
-	case ${1:v1} := <-${2:chan1}
-		${3}
-	case ${4:v2} := <-${5:chan2}
-		${6}
-	default:
-		${7}
-	}
-# struct
-snippet st
-	struct ${1:name} {
-		${2:/* data */}
-	}
-	${3}
-# switch
-snippet sw
-	switch ${1:var} {
-	case ${2:value1}:
-		${3}
-	case ${4:value2}:
-		${5}
-	default:
-		${6}
-	}
-snippet sp
-	fmt.Sprintf("%${1:s}", ${2:var})${3}
-# start
+snippet c
+	//----------------------------------------------------------
+	// ${1}
+	//----------------------------------------------------------
+	${2}
 snippet pk
 	package main
 
 	func main() {
 		${1}
 	}
-# comment
-snippet c
-	//----------------------------------------------------------
-	// ${1}
-	//----------------------------------------------------------
-	${2}
 snippet te
 	package main
 
@@ -128,3 +35,13 @@ snippet te
 	func Test${1}(t *testing.T) {
 	  ${2}
 	}
+snippet co
+	Convey("${1}", func() {
+	})
+snippet cot
+	Convey("${1}", t, func() {
+	})
+snippet so
+	So(${1}, ShouldEqual, ${2})
+snippet soe
+	So(err, ShouldBeNil)
